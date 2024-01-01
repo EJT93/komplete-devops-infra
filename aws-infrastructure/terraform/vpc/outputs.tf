@@ -41,3 +41,4 @@ output "private_route_table_id" {
 output "main_vpc_security_group_id" {
   value = module.vpc.main_vpc_security_group_id
 }
+

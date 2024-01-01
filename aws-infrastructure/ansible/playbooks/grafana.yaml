@@ -1,0 +1,13 @@
+---
+- name: Install Grafana
+  hosts: hosts
+  become: yes
+
+  tasks:
+  - name: download apt key
+    ansible.builtin.apt_key:
+      url: 
+      state: present
+  - name: Add Grafana repo to sources.list
+  - name: Update yum cache and install Grafana
+  - nmae: Ensure Grafana is started and enabled

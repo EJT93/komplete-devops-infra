@@ -38,6 +38,7 @@ variable "pri-rt_cidr" {}
 
 variable "myip" {}
 variable "myip_work" {}
+variable "testing_ip" {}
 
 variable "main-vpc-sg_name" {}
 variable "main-vpc-sg_desc" {}

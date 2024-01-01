@@ -36,6 +36,7 @@ variable "pri-rt_cidr" {}
 
 variable "myip" {}
 variable "myip_work" {}
+variable "testing_ip" {}
 
 variable "main-vpc-sg_name" {}
 variable "main-vpc-sg_desc" {}
@@ -61,4 +62,3 @@ variable "sg_http_jenkins_desc" {}
 variable "sg_https_desc" {}
 
 variable "role_name" {}
-

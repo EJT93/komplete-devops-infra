@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "ssh_myip" {
   from_port                = var.sg_rule_ssh_port
   to_port                  = var.sg_rule_ssh_port
   protocol                 = var.sg_protocol
-  cidr_blocks              = [var.myip, var.myip_work]
+  cidr_blocks              = [var.myip, var.myip_work, var.testing_ip]
   security_group_id        = aws_security_group.main-vpc-sg.id
   description              = var.sg_ssh_myip_desc
 }
