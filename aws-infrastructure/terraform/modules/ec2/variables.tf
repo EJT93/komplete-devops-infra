@@ -12,3 +12,7 @@ variable "delete_on_termination" {}
 variable "instance_name" {}
 variable "eks_access_role_instance_profile_name" {}
 variable "eks_access_role_instance_profile_role" {}
+
+variable "public_key_path" {
+  type = string
+}

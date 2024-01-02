@@ -4,6 +4,7 @@ module "bastion-host" {
   
   region                                = var.region
   key_name                              = var.key_name
+  public_key_path                       = var.public_key_path
   instance_type                         = var.instance_type
   assoc_pub_ip                          = var.assoc_pub_ip
 

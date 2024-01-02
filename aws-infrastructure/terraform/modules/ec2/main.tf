@@ -3,11 +3,16 @@ resource "aws_iam_instance_profile" "eks_access_role_instance_profile" {
   role = var.eks_access_role_instance_profile_role
 }
 
+resource "aws_key_pair" "name" {
+  key_name = var.key_name
+  public_key = file(var.public_key_path)
+}
+
 resource "aws_instance" "bastion-host" {
   ami                     = data.aws_ami.server_ami.id
   instance_type           = var.instance_type
 
-  key_name                = var.key_name
+  key_name                = aws_key_pair.name.id
   vpc_security_group_ids  = [data.aws_security_group.my-vpc-sg.id]
   subnet_id               = data.aws_subnet.my-vpc-subnet.id
   iam_instance_profile    = aws_iam_instance_profile.eks_access_role_instance_profile.name
@@ -24,6 +29,6 @@ resource "aws_instance" "bastion-host" {
   }
 
   provisioner "local-exec" {
-    command               = "/Users/elijahtorrence/terraform_ssh_command.sh ${self.public_ip}"
+    command               = "./terraform_ssh_command.sh ${self.public_ip} ${var.public_key_path}"
   }
 } 
