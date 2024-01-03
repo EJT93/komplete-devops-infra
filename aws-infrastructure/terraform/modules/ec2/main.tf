@@ -29,6 +29,7 @@ resource "aws_instance" "bastion-host" {
 
   }
 
+# Execute the shell script allowing for immediate ssh access
   provisioner "local-exec" {
     command               = "../modules/ec2/terraform_ssh_command.sh ${self.public_ip} ${var.private_key_path}"
   }
