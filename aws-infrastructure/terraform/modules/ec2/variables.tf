@@ -1,5 +1,12 @@
 variable "region" {}
 variable "key_name" {}
+variable "jenkins_type" {}
+variable "jenkins_port" {}
+variable "jenkins_protocol" {}
+variable "cidr_blocks" {
+  type = list
+}
+variable "github_key" {}
 variable "instance_type" {}
 variable "assoc_pub_ip" {}
 variable "my-vpc_name" {}

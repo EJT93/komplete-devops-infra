@@ -8,6 +8,15 @@ resource "aws_key_pair" "name" {
   public_key = file(var.public_key_path)
 }
 
+resource "aws_security_group_rule" "jenkins_http" {
+  type              = var.jenkins_type
+  from_port         = var.jenkins_port
+  to_port           = var.jenkins_port
+  protocol          = var.jenkins_protocol
+  security_group_id = data.aws_security_group.my-vpc-sg.id
+  cidr_blocks       = var.cidr_blocks
+}
+
 resource "aws_instance" "bastion-host" {
   ami                     = data.aws_ami.server_ami.id
   instance_type           = var.instance_type
@@ -32,5 +41,25 @@ resource "aws_instance" "bastion-host" {
 # Execute the shell script allowing for immediate ssh access
   provisioner "local-exec" {
     command               = "../modules/ec2/terraform_ssh_command.sh ${self.public_ip} ${var.private_key_path}"
+  }
+
+  # Execute the shell script to create and make executable open_jenkins files
+  provisioner "local-exec" {
+    command = "../modules/ec2/open_jenkins.sh ${self.public_ip}"
+  }
+
+    # Using file provisioner to copy the SSH public key
+  provisioner "file" {
+    source      = var.github_key  # Replace with the path to your SSH public key
+    destination = "/tmp/id_rsa.pub"
+  }
+
+  # Using remote-exec to move the SSH key to /root/.ssh/ and set appropriate permissions
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mv /tmp/id_rsa.pub /root/.ssh/",
+      "sudo chmod 600 /root/.ssh/id_rsa.pub",
+      "sudo chown root:root /root/.ssh/id_rsa.pub"
+    ]
   }
 }

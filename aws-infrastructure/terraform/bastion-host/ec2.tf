@@ -4,6 +4,11 @@ module "bastion-host" {
   
   region                                = var.region
   key_name                              = var.key_name
+  jenkins_type                          = var.jenkins_type
+  jenkins_port                          = var.jenkins_port
+  jenkins_protocol                      = var.jenkins_protocol
+  github_key                            = var.github_key
+  cidr_blocks                           = var.cidr_blocks
   public_key_path                       = var.public_key_path
   private_key_path                      = var.private_key_path
   instance_type                         = var.instance_type

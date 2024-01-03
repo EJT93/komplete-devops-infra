@@ -50,15 +50,10 @@ variable "sg_rule_type" {}
 variable "sg_rule_ssh_port" {}
 variable "sg_rule_http_port" {}
 variable "sg_rule_https_port" {}
-variable "sg_rule_jenkins_port" {}
 variable "sg_protocol" {}
 
 variable "sg_cidr" {}
-
 variable "sg_ssh_myip_desc" {}
 variable "sg_ssh_desc" {}
 variable "sg_http_desc" {}
-variable "sg_http_jenkins_desc" {}
 variable "sg_https_desc" {}
-
-variable "role_name" {}

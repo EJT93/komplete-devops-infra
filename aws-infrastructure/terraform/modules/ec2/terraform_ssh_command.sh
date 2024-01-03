@@ -7,5 +7,3 @@ output_file="./ssh.txt"
 echo "ssh -i \"$2\" ec2-user@${1}" > "$output_file"
 
 chmod +x "$output_file"
-
-

@@ -48,16 +48,7 @@ resource "aws_security_group_rule" "http" {
   security_group_id        = aws_security_group.main-vpc-sg.id
   description              = var.sg_http_desc
 }
-# SG Rule: HTTP App-Server
-resource "aws_security_group_rule" "jenkins" {
-  type                     = var.sg_rule_type
-  from_port                = var.sg_rule_jenkins_port
-  to_port                  = var.sg_rule_jenkins_port
-  protocol                 = var.sg_protocol
-  cidr_blocks              = var.sg_cidr
-  security_group_id        = aws_security_group.main-vpc-sg.id
-  description              = var.sg_http_jenkins_desc 
-}
+
 # SG Rule: HTTPS
 resource "aws_security_group_rule" "https" {
   type                     = var.sg_rule_type
