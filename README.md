@@ -7,4 +7,4 @@ This repository contains Terraform code to set up a Virtual Private Cloud (VPC) 
 Before you begin, you will need the following:
 
 * An AWS account
-* The AWS CLI installed and configu
+* The AWS CLI installed and configured

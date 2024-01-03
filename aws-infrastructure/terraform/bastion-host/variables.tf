@@ -3,6 +3,7 @@ variable "region" {}
 variable "instance_type" {}
 variable "key_name" {}
 variable "public_key_path" {}
+variable "private_key_path" {}
 variable "assoc_pub_ip" {}
 variable "my-vpc_name" {}
 variable "my-vpc-subnet_name" {}
