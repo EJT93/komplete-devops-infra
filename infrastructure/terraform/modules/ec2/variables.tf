@@ -1,11 +1,19 @@
 variable "region" {}
 variable "key_name" {}
-variable "jenkins_type" {}
+
+variable "sg_rule_type" {}
+variable "sg_protocol" {}
+
+variable "sg_ssh_port" {}
+
+variable "sg_http_port" {}
+variable "sg_http_desc" {}
+
+variable "sg_https_port" {}
+variable "sg_https_desc" {}
+
 variable "jenkins_port" {}
-variable "jenkins_protocol" {}
-variable "cidr_blocks" {
-  type = list
-}
+
 variable "github_key" {}
 variable "instance_type" {}
 variable "assoc_pub_ip" {}

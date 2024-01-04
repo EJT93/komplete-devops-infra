@@ -4,8 +4,7 @@
 .vscode/
 *plan.txt
 plan.txt
-*ssh.txt
-ssh.txt
+*.txt
 
 
 # These are some examples of commonly ignored file patterns.

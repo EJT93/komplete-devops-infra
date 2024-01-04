@@ -41,9 +41,9 @@ module "vpc" {
   pri-rt_name                     = var.pri-rt_name
   pri-rt_cidr                     = var.pri-rt_cidr
 
-  myip                            = var.myip
-  myip_work                       = var.myip_work
-  testing_ip                      = var.testing_ip 
+  # myip                            = var.myip
+  # myip_work                       = var.myip_work
+  # testing_ip                      = var.testing_ip 
 
   main-vpc-sg_name                = var.main-vpc-sg_name
   main-vpc-sg_desc                = var.main-vpc-sg_desc
@@ -55,15 +55,15 @@ module "vpc" {
 
   sg_rule_type                    = var.sg_rule_type 
   sg_rule_ssh_port                = var.sg_rule_ssh_port
-  sg_rule_http_port               = var.sg_rule_http_port
-  sg_rule_https_port              = var.sg_rule_https_port
+  # sg_rule_http_port               = var.sg_rule_http_port
+  # sg_rule_https_port              = var.sg_rule_https_port
   sg_protocol                     = var.sg_protocol
   sg_cidr                         = var.sg_cidr
 
-  sg_ssh_myip_desc                = var.sg_ssh_myip_desc
-  sg_ssh_desc                     = var.sg_ssh_desc
-  sg_http_desc                    = var.sg_http_desc
-  sg_https_desc                   = var.sg_https_desc
+  # sg_ssh_myip_desc                = var.sg_ssh_myip_desc
+  # sg_ssh_desc                     = var.sg_ssh_desc
+  # sg_http_desc                    = var.sg_http_desc
+  # sg_https_desc                   = var.sg_https_desc
   key_name                        = var.key_name
   public_key_path                 = var.public_key_path
 }

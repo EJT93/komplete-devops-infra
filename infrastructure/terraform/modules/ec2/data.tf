@@ -1,6 +1,6 @@
 data "aws_vpc" "my-vpc" {
   filter {
-    name   = "tag:Name"
+    name                  = "tag:Name"
     values                = [var.my-vpc_name]
   }
 }
@@ -41,6 +41,6 @@ data "aws_ami" "server_ami" {
 	}
 }
 
-data "external" "existing_key_pair" {
-  program = ["bash", "${path.module}/scripts/check_key_pair.sh", var.key_name]
+data "external" "my_ip" {
+  program = ["bash", "${path.module}/scripts/get_ip.sh"]
 }

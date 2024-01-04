@@ -36,10 +36,6 @@ variable "pub-rt_cidr" {}
 variable "pri-rt_name" {}
 variable "pri-rt_cidr" {}
 
-variable "myip" {}
-variable "myip_work" {}
-variable "testing_ip" {}
-
 variable "main-vpc-sg_name" {}
 variable "main-vpc-sg_desc" {}
 variable "main-vpc-sg_from_port" {}
@@ -50,16 +46,8 @@ variable "main-vpc_name" {}
 
 variable "sg_rule_type" {}
 variable "sg_rule_ssh_port" {}
-variable "sg_rule_http_port" {}
-variable "sg_rule_https_port" {}
 variable "sg_protocol" {}
-
 variable "sg_cidr" {}
-
-variable "sg_ssh_myip_desc" {}
-variable "sg_ssh_desc" {}
-variable "sg_http_desc" {}
-variable "sg_https_desc" {}
 
 variable "key_name" {}
 variable "public_key_path" {}
