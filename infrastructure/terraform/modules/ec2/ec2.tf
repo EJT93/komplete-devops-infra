@@ -44,15 +44,15 @@ resource "aws_instance" "ec2" {
     # Using file provisioner to copy the SSH public key
   provisioner "file" {
     source      = var.github_key  # Replace with the path to your SSH public key
-    destination = "/tmp/id_rsa.pub"
+    destination = "/tmp/id_rsa"
   }
 
   # Using remote-exec to move the SSH key to /root/.ssh/ and set appropriate permissions
   provisioner "remote-exec" {
     inline = [
-      "sudo mv /tmp/id_rsa.pub /root/.ssh/",
-      "sudo chmod 600 /root/.ssh/id_rsa.pub",
-      "sudo chown root:root /root/.ssh/id_rsa.pub"
+      "sudo mv /tmp/id_rsa /root/.ssh/",
+      "sudo chmod 600 /root/.ssh/id_rsa",
+      "sudo chown root:root /root/.ssh/id_rsa"
     ]
   }
 }
