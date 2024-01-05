@@ -29,7 +29,7 @@ sudo systemctl enable docker &&
 # Install Helm
 sudo curl -fsSL -o /opt/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 &&
 chmod 700 /opt/get_helm.sh &&
-sh ./get_helm.sh &&
+sh /opt/get_helm.sh &&
 
 # Install kubectl
 curl -o /opt/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.25.15/2023-11-14/bin/linux/amd64/kubectl &&

@@ -1,10 +1,10 @@
+# variables.tf
 variable "region" {}
 variable "frontend_node_group_name" {}
 variable "backend_node_group_name" {}
 variable "capacity_type" {}
 variable "disk_size" {}
 variable "instance_types" {}
-# variable "ec2_ssh_key" {}
 variable "public_key_path" {}
 variable "key_name" {}
 variable "desired_size" {}

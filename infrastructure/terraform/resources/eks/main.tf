@@ -8,7 +8,6 @@ module "et-eks" {
   capacity_type             =  var.capacity_type
   disk_size                 = var.disk_size
   instance_types            = var.instance_types
-#  ec2_ssh_key  = var.ec2_ssh_key
   key_name                  = var.key_name
   public_key_path           = var.public_key_path
   desired_size              = var.desired_size
@@ -19,5 +18,4 @@ module "et-eks" {
   eks_cluster_version       = var.eks_cluster_version
   s3_bucket                 = var.s3_bucket
   bucket_force_destroy      = var.bucket_force_destroy
-
 }

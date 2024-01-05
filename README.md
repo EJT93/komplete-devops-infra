@@ -8,3 +8,10 @@ Before you begin, you will need the following:
 
 * An AWS account
 * The AWS CLI installed and configured
+* Terraform
+* Git
+* GitHub Account
+
+### Terraform
+
+Terraform will be used to create the VPC, EKS Cluster, Bastion Host(ec2), and DNS records(Route 53).
