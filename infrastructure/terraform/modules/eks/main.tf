@@ -20,3 +20,32 @@ resource "aws_eks_cluster" "eks" {
   ]
 
 }
+
+# Ensure that the aws-auth ConfigMap is configured correctly, granting the necessary access to the EKS-Access-Role and eksUser
+resource "kubernetes_config_map" "aws_auth" {
+  metadata {
+    name      = "aws-auth"
+    namespace = "kube-system"
+  }
+
+  data = {
+    mapRoles = <<-YAML
+      - rolearn: ${aws_iam_role.worker.arn}
+        username: system:node:{{EC2PrivateDNSName}}
+        groups:
+          - system:bootstrappers
+          - system:nodes
+      - rolearn: arn:aws:iam::290481657399:role/EKS-Access-Role
+        username: eks-access-role
+        groups:
+          - system:masters
+    YAML
+
+    mapUsers = <<-YAML
+      - userarn: arn:aws:iam::290481657399:user/eksUser
+        username: eksUser
+        groups:
+          - system:masters
+    YAML
+  }
+}

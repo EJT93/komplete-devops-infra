@@ -40,4 +40,9 @@ mkdir -p $HOME/bin && cp /opt/kubectl $HOME/bin/kubectl && export PATH=$HOME/bin
 echo "alias kc='kubectl'" >> ~/.bashrc &&
 echo "alias kcclient='aws eks update-kubeconfig --name et-eks-01 --region us-east-2'" >> ~/.bashrc &&
 
-kcclient
+source ~/.bashrc && aws eks update-kubeconfig --name et-eks-01 --region us-east-2 &&
+
+# Add GitHub's SSH key to known_hosts to avoid manual verification
+ssh-keyscan -H id_rsa >> ~/.ssh/known_hosts &&
+
+mkdir -p $HOME/repos && cd $HOME/repos && git clone git@github.com:EJT93/et-microservices-project.git
