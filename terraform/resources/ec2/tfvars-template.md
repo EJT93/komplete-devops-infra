@@ -1,3 +1,4 @@
+```go
 region                                  =
 key_name                                = 
 
@@ -21,9 +22,11 @@ sg_https_desc                           =
 instance_type                           = 
 assoc_pub_ip                            =
 
+// Must match custom VPC values
 my-vpc_name                             = 
 my-vpc-subnet_name                      = 
 my-vpc-sg_name                          = 
+
 private_ip                              = 
 
 volume_type                             = 
@@ -33,3 +36,4 @@ instance_name                           =
 
 eks_access_role_instance_profile_name   = 
 eks_access_role_instance_profile_role   = 
+```
