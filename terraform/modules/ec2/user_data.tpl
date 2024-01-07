@@ -42,7 +42,8 @@ echo "alias kcclient='aws eks update-kubeconfig --name et-eks-01 --region us-eas
 
 source ~/.bashrc && aws eks update-kubeconfig --name et-eks-01 --region us-east-2 &&
 
-# Add GitHub to known_hosts to avoid manual verification
-mkdir -p $HOME/repos && git clone git@github.com:EJT93/et-microservices-project.git $HOME/repos
+ssh-keyscan -H github.com >> /root/.ssh/known_hosts
 
-mkdir -p $HOME/repos && git clone git@github.com:EJT93/et-microservices-project.git $HOME/repos
+# Add GitHub to known_hosts to avoid manual verification
+mkdir -p /root/repos && git clone git@github.com:EJT93/et-microservices-project.git /root/repos
+
