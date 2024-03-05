@@ -28,7 +28,7 @@ variable "instance_name" {
   default = "Bastion-Host"
 }
 variable "eks_access_role_instance_profile_name" {
-  default = "EKS-Access-Role-Instance-Profile" 
+  default = "EKS-Access-Role-Instance-Profile"
 }
 variable "eks_access_role_instance_profile_role" {
   default = "EKS-Access-Role"

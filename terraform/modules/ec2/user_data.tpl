@@ -26,6 +26,9 @@ sudo yum install -y docker &&
 sudo systemctl start docker &&
 sudo systemctl enable docker &&
 
+# Install Ansible
+
+
 # Install Helm
 sudo curl -fsSL -o /opt/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 &&
 chmod 700 /opt/get_helm.sh &&
@@ -45,5 +48,6 @@ source ~/.bashrc && aws eks update-kubeconfig --name et-eks-01 --region us-east-
 ssh-keyscan -H github.com >> /root/.ssh/known_hosts
 
 # Add GitHub to known_hosts to avoid manual verification
-mkdir -p /root/repos && git clone git@github.com:EJT93/et-microservices-project.git /root/repos
+mkdir -p repos/et-microservices-project/ && git clone git@github.com:EJT93/et-microservices-project.git /root/repos/et-microservices-project/ &&
 
+git clone git@github.com:EJT93/kubernetes-devops-jenkins.git /root/repos/et-microservices-project/

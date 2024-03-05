@@ -9,7 +9,7 @@ resource "aws_security_group_rule" "jenkins_http" {
 
 resource "aws_security_group_rule" "ssh_my_ip" {
   type              = var.sg_rule_type
-  from_port         = var.sg_ssh_port  # or any other port you want to open
+  from_port         = var.sg_ssh_port # or any other port you want to open
   to_port           = var.sg_ssh_port
   protocol          = var.sg_protocol
   cidr_blocks       = [data.external.my_ip.result["cidr"]]

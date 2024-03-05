@@ -1,4 +1,5 @@
 # eks.tf
+
 resource "aws_eks_cluster" "eks" {
   name      = var.eks_cluster_name
   version   = var.eks_cluster_version
@@ -19,6 +20,48 @@ resource "aws_eks_cluster" "eks" {
     data.terraform_remote_state.vpc
   ]
 
+}
+
+# data "aws_eks_cluster" "eks" {
+#   name = var.eks_cluster_name
+# }
+data "aws_eks_cluster_auth" "eks" {
+  name = aws_eks_cluster.eks.name
+}
+
+
+data "terraform_remote_state" "vpc" {
+  backend                 = "s3"
+  config  = {
+    bucket                = "elijah-terraform-state"
+    key                   = "komplete-devops-vpc/terraform.tfstate"
+    region                = "us-east-2"
+  }
+}
+
+data "tls_certificate" "cluster" {
+  url = aws_eks_cluster.eks.identity.0.oidc.0.issuer
+}
+resource "aws_iam_openid_connect_provider" "oidc_provider" {
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = [data.tls_certificate.cluster.certificates.0.sha1_fingerprint]
+  url             = aws_eks_cluster.eks.identity[0].oidc[0].issuer
+}
+
+provider "kubernetes" {
+  host                   = aws_eks_cluster.eks.endpoint
+  token                  = data.aws_eks_cluster_auth.eks.token
+  cluster_ca_certificate = base64decode(aws_eks_cluster.eks.certificate_authority[0].data)
+}
+
+resource "kubernetes_service_account" "ebs_csi_driver" {
+  metadata {
+    name      = "ebs-csi-driver"
+    namespace = "kube-system"
+    annotations = {
+      "eks.amazonaws.com/role-arn" = aws_iam_role.ebs_csi_driver.arn
+    }
+  }
 }
 
 # Ensure that the aws-auth ConfigMap is configured correctly, granting the necessary access to the EKS-Access-Role and eksUser

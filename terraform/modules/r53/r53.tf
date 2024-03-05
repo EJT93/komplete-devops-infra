@@ -9,7 +9,7 @@ data "terraform_remote_state" "ec2" {
 
 # Update R53 A record
 resource "aws_route53_record" "dev-react" {
-  zone_id = var.react_zone_id
+  zone_id = var.zone_id
   name    = var.react_zone_name
   type    = var.zone_type
   ttl     = var.zone_ttl
@@ -18,7 +18,7 @@ resource "aws_route53_record" "dev-react" {
 }
 
 resource "aws_route53_record" "dev-admin" {
-  zone_id = var.admin_zone_id
+  zone_id = var.zone_id
   name    = var.admin_zone_name
   type    = var.zone_type
   ttl     = var.zone_ttl
@@ -26,7 +26,7 @@ resource "aws_route53_record" "dev-admin" {
 }
 
 resource "aws_route53_record" "dev-registry" {
-  zone_id = var.registry_zone_id
+  zone_id = var.zone_id
   name    = var.registry_zone_name
   type    = var.zone_type
   ttl     = var.zone_ttl
@@ -34,7 +34,7 @@ resource "aws_route53_record" "dev-registry" {
 }
 
 resource "aws_route53_record" "dev-rancher" {
-  zone_id = var.rancher_zone_id
+  zone_id = var.zone_id
   name    = var.rancher_zone_name
   type    = var.zone_type
   ttl     = var.zone_ttl
@@ -42,8 +42,16 @@ resource "aws_route53_record" "dev-rancher" {
 }
 
 resource "aws_route53_record" "dev-kibana" {
-  zone_id = var.kibana_zone_id
+  zone_id = var.zone_id
   name    = var.kibana_zone_name
+  type    = var.zone_type
+  ttl     = var.zone_ttl
+  records = [var.records]
+}
+
+resource "aws_route53_record" "dev-jenkins" {
+  zone_id = var.zone_id
+  name    = var.jenkins_zone_name
   type    = var.zone_type
   ttl     = var.zone_ttl
   records = [var.records]
